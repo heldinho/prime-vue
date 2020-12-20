@@ -11,16 +11,23 @@ const vuexLocalStorage = new VuexPersist({
 
 export default new Vuex.Store({
   state: {
-    fullname: ''
+    fullname: '',
+    tab: 0
   },
   mutations: {
-    SET_FULLNAME: function(state, name) {
+    SET_FULLNAME(state, name) {
       state.fullname = name
+    },
+    SET_TAB(state, tab) {
+      state.tab = tab
     }
   },
   actions: {
-    actionFullname: function({ commit }, name) {
+    actionFullname({ commit }, name) {
       commit('SET_FULLNAME', name)
+    },
+    actionTab({ commit }, tab) {
+      commit('SET_TAB', tab)
     }
   },
   modules: {},

@@ -1,0 +1,17 @@
+.hello {
+  input {
+    padding: 10px 8px;
+
+    &:hover {
+      border: 1px solid rgb(1, 87, 43);
+    }
+  }
+
+  ul {
+    li {
+      &.active {
+        border-bottom: 2px solid rgb(0, 99, 20);
+      }
+    }
+  }
+}

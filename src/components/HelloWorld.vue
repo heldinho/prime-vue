@@ -1,27 +1,28 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <InputText
-      type="text"
-      v-model="name"
-      class="p-inputtext-lg"
-      placeholder="Large"
-    />
+    <input v-model="name" />
     {{ fullname }}
+    <div>
+      <ul>
+        <li @click="actionTab(0)" :class="[tab == 0 ? 'active' : '']">Tab 1</li>
+        <li @click="actionTab(1)" :class="[tab == 1 ? 'active' : '']">Tab 2</li>
+        <li @click="actionTab(2)" :class="[tab == 2 ? 'active' : '']">Tab 3</li>
+      </ul>
+      <div v-if="tab == 0">Tab 1</div>
+      <div v-if="tab == 1">Tab 2</div>
+      <div v-if="tab == 2">Tab 3</div>
+    </div>
   </div>
 </template>
 
 <script>
+import './HelloWorld.min.css'
 import { mapState, mapActions } from 'vuex'
-import InputText from 'primevue/inputtext'
+
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-  components: {
-    InputText
-  },
+  props: {},
+  components: {},
   data: () => ({
     name: ''
   }),
@@ -32,7 +33,8 @@ export default {
   },
   computed: {
     ...mapState({
-      fullname: (state) => state.fullname
+      fullname: (state) => state.fullname,
+      tab: (state) => state.tab
     })
   },
   mounted() {
@@ -40,7 +42,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      actionFullname: 'actionFullname'
+      actionFullname: 'actionFullname',
+      actionTab: 'actionTab'
     })
   }
 }
